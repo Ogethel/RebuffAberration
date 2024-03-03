@@ -1,0 +1,13 @@
+VisualElement {}
+
+.interactable-button Button{
+	background-color: orange;
+	border-width: var(--border-width);
+	border-color: white;
+	transition: 0.25s all;
+}
+
+.interactable-button Button:hover{
+	background-color: #ff8c00;
+	border-radius: 10px
+}
