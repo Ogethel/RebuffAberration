@@ -1,0 +1,22 @@
+.start-button {
+    justify-content: center;
+    width: 54%;
+    color: rgb(189, 212, 255);
+    background-color: rgb(18, 24, 31);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.start-button:hover {
+    color: rgb(255, 255, 255);
+    transition-timing-function: ease-in-out-cubic;
+    transition-duration: 0.2s;
+    transform-origin: center 30%;
+    scale: 1.1 1.1;
+}
+
+.start-button:active {
+    color: rgba(189, 212, 255, 0.62);
+}

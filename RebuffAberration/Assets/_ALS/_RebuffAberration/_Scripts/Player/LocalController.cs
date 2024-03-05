@@ -86,6 +86,6 @@ public class LocalController : MonoBehaviour
 		//PlayerWalkingChanged?.Invoke(moveDir != Vector3.zero);
 
 		transform.forward = Vector3.Slerp(transform.forward, moveDir, _rotateSpeed * Time.deltaTime);
-		Debug.Log(inputVector);
+		//Debug.Log(inputVector);
 	}
 }
