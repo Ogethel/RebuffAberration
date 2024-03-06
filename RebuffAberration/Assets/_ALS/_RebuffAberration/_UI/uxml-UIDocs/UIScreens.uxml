@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StartScreen" src="project://database/Assets/_ALS/_RebuffAberration/_UI/uxml-UIDocs/StartScreen.uxml?fileID=9197481963319205126&amp;guid=28ddeb4038d020e4cb1ba267319ff80e&amp;type=3#StartScreen" />
+    <ui:Instance template="StartScreen" name="StartScreen" picking-mode="Ignore" style="position: absolute; width: 100%; height: 100%;" />
+</ui:UXML>

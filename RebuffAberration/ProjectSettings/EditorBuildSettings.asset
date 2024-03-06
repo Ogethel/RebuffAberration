@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_ALS/_RebuffAberration/_Scenes/Bootstrap.unity
+    guid: 0d9ad70c82f5c6d4c8558415c259fadb
+  - enabled: 1
+    path: Assets/_ALS/_RebuffAberration/_Scenes/MainMenu.unity
+    guid: 9ff96452019457549b31cfa3a2ad303a
+  - enabled: 1
+    path: Assets/_ALS/_RebuffAberration/_Scenes/Level_1.unity
+    guid: 3d1a9bacab3802048a7a3e54d00a84aa
   m_configObjects: {}

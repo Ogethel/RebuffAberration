@@ -184,7 +184,7 @@ namespace ALS.Aberration
 
             //Replace with my own UI Elements
             //m_SplashScreen = new SplashScreen(root.Q<VisualElement>("splash__container"));
-            //m_StartScreen = new StartScreen(root.Q<VisualElement>("start__container"));
+            m_StartScreen = new StartScreen(root.Q<VisualElement>("start__container"));
             //m_HomeScreen = new MainMenuScreen(root.Q<VisualElement>("menu__container"));
             //m_SettingsScreen = new SettingsScreen(root.Q<VisualElement>("settings__container"));
             //m_LevelSelectionScreen = new LevelSelectionScreen(root.Q<VisualElement>("select__container"));
@@ -204,14 +204,14 @@ namespace ALS.Aberration
         {
             m_Screens = new List<UIScreen>
             {
-                m_SplashScreen,
+                //m_SplashScreen,
                 m_StartScreen,
-                m_HomeScreen,
-                m_SettingsScreen,
-                m_LevelSelectionScreen,
-                m_GameScreen,
-                m_PauseScreen,
-                m_EndScreen
+                //m_HomeScreen,
+                //m_SettingsScreen,
+                //m_LevelSelectionScreen,
+                //m_GameScreen,
+                //m_PauseScreen,
+                //m_EndScreen
             };
         }
 

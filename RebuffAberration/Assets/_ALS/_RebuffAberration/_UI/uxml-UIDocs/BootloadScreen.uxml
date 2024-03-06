@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_ALS/_RebuffAberration/_UI/css-SytleSheets/StartScreen.uss?fileID=7433441132597879392&amp;guid=43a12bc37b108f84fb86e9ed0043ce9b&amp;type=3#StartScreen" />
+    <ui:VisualElement name="start__container" picking-mode="Ignore" style="flex-grow: 1; position: absolute; left: 0; top: 0; align-items: center; justify-content: center; width: 100%; height: 100%; background-color: rgb(26, 33, 41); color: rgb(189, 212, 255);">
+        <ui:GroupBox name="start__start-group" picking-mode="Ignore" style="align-items: center; justify-content: center; width: 60%; height: 40%;">
+            <ui:VisualElement name="start_top-bar" picking-mode="Ignore" style="flex-grow: 0; width: 100%; flex-basis: 15%; background-color: rgb(81, 154, 207); flex-direction: column; justify-content: flex-start;" />
+            <ui:Button text="START" parse-escape-sequences="false" display-tooltip-when-elided="true" name="start__start-button" class="start-button" style="flex-basis: 13px; width: 100%; margin-top: 4px; font-size: 66px; letter-spacing: 12px; background-color: rgb(26, 33, 41); margin-bottom: 3px; padding-top: 32px; padding-bottom: 25px; justify-content: flex-start;" />
+            <ui:Label text="REBUFF ABERRATION" display-tooltip-when-elided="true" picking-mode="Ignore" name="start__title-text" style="background-color: rgba(255, 255, 255, 0); color: rgb(189, 212, 255); flex-basis: 4px; width: 100%; margin-top: 5%; margin-bottom: 4%; font-size: 41px; -unity-font-style: normal; -unity-text-align: middle-center; -unity-background-scale-mode: scale-to-fit; padding-bottom: 6px; padding-top: 3px; flex-direction: column; justify-content: flex-start; align-self: auto;" />
+            <ui:VisualElement name="start_footer-bar" picking-mode="Ignore" style="flex-grow: 0; width: 100%; flex-basis: 15%; background-color: rgb(81, 154, 207);" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
