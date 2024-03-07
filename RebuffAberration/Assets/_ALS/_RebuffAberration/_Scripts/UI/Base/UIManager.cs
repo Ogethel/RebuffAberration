@@ -85,14 +85,14 @@ namespace ALS.Aberration
 
             // Pair GameEvents with methods to Show each screen
             UIEvents.SplashScreenShown += UIEvents_SplashScreenShown;
-            UIEvents.MainMenuShown += UIEvents_MainMenuShown;
-            UIEvents.SettingsShown += UIEvents_SettingsShown;
-            UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
-            UIEvents.GameScreenShown += UIEvents_GameScreenShown;
-            UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
-            UIEvents.EndScreenShown += UIEvents_EndScreenShown;
-            UIEvents.ScreenClosed += UIEvents_ScreenClosed;
-            UIEvents.UrlOpened += UIEvents_UrlOpened;
+            //UIEvents.MainMenuShown += UIEvents_MainMenuShown;
+            //UIEvents.SettingsShown += UIEvents_SettingsShown;
+            //UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
+            //UIEvents.GameScreenShown += UIEvents_GameScreenShown;
+            //UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
+            //UIEvents.EndScreenShown += UIEvents_EndScreenShown;
+            //UIEvents.ScreenClosed += UIEvents_ScreenClosed;
+            //UIEvents.UrlOpened += UIEvents_UrlOpened;
         }
 
         private void UnsubscribeFromEvents()
@@ -100,14 +100,14 @@ namespace ALS.Aberration
             SceneEvents.PreloadCompleted -= SceneEvents_PreloadCompleted;
 
             UIEvents.SplashScreenShown -= UIEvents_SplashScreenShown;
-            UIEvents.MainMenuShown -= UIEvents_MainMenuShown;
-            UIEvents.SettingsShown -= UIEvents_SettingsShown;
-            UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
-            UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
-            UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
-            UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
-            UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
-            UIEvents.UrlOpened -= UIEvents_UrlOpened;
+            //UIEvents.MainMenuShown -= UIEvents_MainMenuShown;
+            //UIEvents.SettingsShown -= UIEvents_SettingsShown;
+            //UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
+            //UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
+            //UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
+            //UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
+            //UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
+            //UIEvents.UrlOpened -= UIEvents_UrlOpened;
         }
 
         // Event-handling methods
@@ -183,7 +183,7 @@ namespace ALS.Aberration
             VisualElement root = m_Document.rootVisualElement;
 
             //Replace with my own UI Elements
-            //m_SplashScreen = new SplashScreen(root.Q<VisualElement>("splash__container"));
+            m_SplashScreen = new SplashScreen(root.Q<VisualElement>("splash__container"));
             m_StartScreen = new StartScreen(root.Q<VisualElement>("start__container"));
             //m_HomeScreen = new MainMenuScreen(root.Q<VisualElement>("menu__container"));
             //m_SettingsScreen = new SettingsScreen(root.Q<VisualElement>("settings__container"));
@@ -204,7 +204,7 @@ namespace ALS.Aberration
         {
             m_Screens = new List<UIScreen>
             {
-                //m_SplashScreen,
+                m_SplashScreen,
                 m_StartScreen,
                 //m_HomeScreen,
                 //m_SettingsScreen,

@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_ALS/_RebuffAberration/_UI/css-SytleSheets/MenuScreens.uss?fileID=7433441132597879392&amp;guid=8b6e3b7ab23f1924f93a6d69c468ef34&amp;type=3#MenuScreens" />
     <Style src="project://database/Assets/_ALS/_RebuffAberration/_UI/css-SytleSheets/ProgressBars.uss?fileID=7433441132597879392&amp;guid=a0e1499d7f9be634d99ca07484a7decd&amp;type=3#ProgressBars" />
-    <ui:VisualElement name="splash__container" picking-mode="Ignore" style="flex-grow: 1; width: 100%; height: 100%; justify-content: center; align-items: center; background-color: rgb(22, 25, 34);">
+    <ui:VisualElement name="splash__container" picking-mode="Ignore" style="flex-grow: 1; width: 100%; height: 100%; justify-content: center; align-items: center; background-color: rgb(22, 25, 34); align-self: center;">
         <ui:Label tabindex="-1" text="SplashScreen" parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu_screen-label" picking-mode="Ignore" />
-        <ui:VisualElement name="menu__start-group" picking-mode="Ignore" style="flex-grow: 1;">
-            <ui:Label tabindex="-1" text="Loading" parse-escape-sequences="true" display-tooltip-when-elided="true" name="splash__loading-label" style="color: rgb(155, 200, 236);" />
-            <ui:ProgressBar value="22" name="splash__progress-bar" />
+        <ui:VisualElement name="menu__start-group" picking-mode="Ignore" style="flex-grow: 1; align-self: center; justify-content: center; width: 32%;">
+            <ui:Label tabindex="-1" text="Loading..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="splash__loading-label" style="color: rgb(155, 200, 236); justify-content: center; align-self: center; font-size: 35px; -unity-text-align: upper-center;" />
+            <ui:ProgressBar value="22" name="splash__progress-bar" style="scale: 1 1.25; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
