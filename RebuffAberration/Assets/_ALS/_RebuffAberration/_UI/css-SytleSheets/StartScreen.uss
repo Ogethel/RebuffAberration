@@ -1,6 +1,5 @@
 .start-button {
     justify-content: center;
-    width: 54%;
     color: rgb(189, 212, 255);
     background-color: rgb(18, 24, 31);
     border-left-color: rgba(0, 0, 0, 0);

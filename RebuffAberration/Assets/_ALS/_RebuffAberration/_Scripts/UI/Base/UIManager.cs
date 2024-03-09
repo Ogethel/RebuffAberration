@@ -55,7 +55,7 @@ namespace ALS.Aberration
         // A list of all Views to show/hide
         List<UIScreen> m_Screens = new List<UIScreen>();
 
-
+        [SerializeField] SceneLoader _sceneLoader;
 
         public UIScreen CurrentScreen => m_CurrentScreen;
         public UIDocument Document => m_Document;
@@ -85,30 +85,30 @@ namespace ALS.Aberration
 
             // Pair GameEvents with methods to Show each screen
             UIEvents.SplashScreenShown += UIEvents_SplashScreenShown;
-            //UIEvents.MainMenuShown += UIEvents_MainMenuShown;
+            UIEvents.MainMenuShown += UIEvents_MainMenuShown;
             //UIEvents.SettingsShown += UIEvents_SettingsShown;
-            //UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
-            //UIEvents.GameScreenShown += UIEvents_GameScreenShown;
-            //UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
-            //UIEvents.EndScreenShown += UIEvents_EndScreenShown;
-            //UIEvents.ScreenClosed += UIEvents_ScreenClosed;
-            //UIEvents.UrlOpened += UIEvents_UrlOpened;
-        }
+			//UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
+			//UIEvents.GameScreenShown += UIEvents_GameScreenShown;
+			//UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
+			//UIEvents.EndScreenShown += UIEvents_EndScreenShown;
+			//UIEvents.ScreenClosed += UIEvents_ScreenClosed;
+			//UIEvents.UrlOpened += UIEvents_UrlOpened;
+		}
 
         private void UnsubscribeFromEvents()
         {
             SceneEvents.PreloadCompleted -= SceneEvents_PreloadCompleted;
 
             UIEvents.SplashScreenShown -= UIEvents_SplashScreenShown;
-            //UIEvents.MainMenuShown -= UIEvents_MainMenuShown;
-            //UIEvents.SettingsShown -= UIEvents_SettingsShown;
-            //UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
-            //UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
-            //UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
-            //UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
-            //UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
-            //UIEvents.UrlOpened -= UIEvents_UrlOpened;
-        }
+			UIEvents.MainMenuShown -= UIEvents_MainMenuShown;
+			//UIEvents.SettingsShown -= UIEvents_SettingsShown;
+			//UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
+			//UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
+			//UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
+			//UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
+			//UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
+			//UIEvents.UrlOpened -= UIEvents_UrlOpened;
+		}
 
         // Event-handling methods
 
@@ -133,6 +133,9 @@ namespace ALS.Aberration
             HideScreens();
             m_History.Push(m_HomeScreen);
             m_HomeScreen.Show();
+            if (!_sceneLoader) _sceneLoader = FindAnyObjectByType<SceneLoader>();
+            if (!_sceneLoader) return;
+            _sceneLoader.LoadSceneAdditively(1);
         }
 
         private void UIEvents_SettingsShown()
@@ -185,17 +188,19 @@ namespace ALS.Aberration
             //Replace with my own UI Elements
             m_SplashScreen = new SplashScreen(root.Q<VisualElement>("splash__container"));
             m_StartScreen = new StartScreen(root.Q<VisualElement>("start__container"));
-            //m_HomeScreen = new MainMenuScreen(root.Q<VisualElement>("menu__container"));
-            //m_SettingsScreen = new SettingsScreen(root.Q<VisualElement>("settings__container"));
-            //m_LevelSelectionScreen = new LevelSelectionScreen(root.Q<VisualElement>("select__container"));
-            //m_GameScreen = new GameScreen(root.Q<VisualElement>("question-screen__parent"));
-            //m_PauseScreen = new PauseScreen(root.Q<VisualElement>("pause__container"));
-            //m_EndScreen = new EndScreen(root.Q<VisualElement>("end-screen__container"));
+            Debug.Log($"Sanity check that we have access to the splash_container {m_SplashScreen}");
+            Debug.Log($"Sanity check that we have access to the start_container {m_StartScreen}");
+			m_HomeScreen = new MainMenuScreen(root.Q<VisualElement>("menu__container"));
+			//m_SettingsScreen = new SettingsScreen(root.Q<VisualElement>("settings__container"));
+			//m_LevelSelectionScreen = new LevelSelectionScreen(root.Q<VisualElement>("select__container"));
+			//m_GameScreen = new GameScreen(root.Q<VisualElement>("question-screen__parent"));
+			//m_PauseScreen = new PauseScreen(root.Q<VisualElement>("pause__container"));
+			//m_EndScreen = new EndScreen(root.Q<VisualElement>("end-screen__container"));
 
-            // Notify the GameController the UIScreen for LevelSelection has been setup
-            //LevelSelectionEvents.Initialized?.Invoke(m_LevelSelectionScreen as LevelSelectionScreen);
+			// Notify the GameController the UIScreen for LevelSelection has been setup
+			//LevelSelectionEvents.Initialized?.Invoke(m_LevelSelectionScreen as LevelSelectionScreen);
 
-            RegisterScreens();
+			RegisterScreens();
             HideScreens();
         }
 
@@ -206,7 +211,7 @@ namespace ALS.Aberration
             {
                 m_SplashScreen,
                 m_StartScreen,
-                //m_HomeScreen,
+                m_HomeScreen,
                 //m_SettingsScreen,
                 //m_LevelSelectionScreen,
                 //m_GameScreen,
@@ -258,7 +263,7 @@ namespace ALS.Aberration
         {
             if (screen == null)
                 return;
-
+            Debug.Log($"Current Scene: {m_CurrentScreen}, Screen to Load: {screen}, is Screen transparent? {screen.IsTransparent}");
             if (m_CurrentScreen != null)
             {
                 if (!screen.IsTransparent)

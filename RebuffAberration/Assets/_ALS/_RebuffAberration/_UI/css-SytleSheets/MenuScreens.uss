@@ -1,8 +1,21 @@
 .screen-visible {
+    position: absolute;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
 }
 
 .screen-hidden {
+    transition-duration: 0.5s;
+    position: absolute;
+    bottom: 100%;
+    opacity: 0;
 }
 
 .screen-label {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgb(255, 163, 16);
+    font-size: 68px;
 }

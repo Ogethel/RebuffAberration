@@ -120,11 +120,12 @@ namespace ALS.Aberration
         private IEnumerator HideWithDelay(float delayInSecs)
         {
             yield return new WaitForSeconds(delayInSecs);
-
+            Debug.Log("Tried to hide screen");
             if (m_UseTransition)
             {
                 m_RootElement.AddToClassList(k_HiddenClass); // Add hidden class
                 m_RootElement.RemoveFromClassList(k_VisibleClass); // Remove visible class
+                Debug.Log($"Set Root Element {m_RootElement}, to hidden class");
             }
             else
             {
@@ -136,6 +137,7 @@ namespace ALS.Aberration
         public void HideImmediately()
         {
             m_RootElement.style.display = DisplayStyle.None;
+            Debug.Log($"Set display style to none for: {m_RootElement.style}, value: {m_RootElement.style.display}");
         }
         #endregion
     }

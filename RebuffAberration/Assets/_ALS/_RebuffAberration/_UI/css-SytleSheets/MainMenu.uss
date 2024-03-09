@@ -1,0 +1,24 @@
+.mainmenu-button {
+    -unity-font: url('project://database/Assets/_ALS/_RebuffAberration/_Fonts/Archery_Black_Condensed.ttf?fileID=12800000&guid=9bc85aec285a1024d8a3ded80e324af8&type=3#Archery_Black_Condensed');
+    -unity-font-definition: initial;
+    font-size: 100px;
+    -unity-font-style: normal;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    background-image: url('project://database/Assets/_ALS/_RebuffAberration/_Art/UI/Patterns/CrackedEarthTexture_Stylized.png?fileID=1292471380&guid=8b0f1c69e732f424d9697dd9c00bb227&type=3#CrackedEarthTexture_Stylized_3');
+    -unity-background-image-tint-color: rgba(108, 150, 195, 0.82);
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(243, 170, 52);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-left-color: rgb(48, 43, 36);
+    border-right-color: rgb(48, 43, 36);
+    border-top-color: rgb(48, 43, 36);
+    border-bottom-color: rgb(48, 43, 36);
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: rgb(0, 64, 111);
+    background-color: rgba(54, 55, 156, 0.46);
+}
