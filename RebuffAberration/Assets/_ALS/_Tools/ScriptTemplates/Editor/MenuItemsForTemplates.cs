@@ -15,4 +15,11 @@ public static class MenuItemsForTemplates
 		string templatePath = "Assets/_ALS/_Tools/ScriptTemplates/Editor/Templates/83-C#_Scriptable Object-NewScriptableObjectScript.cs.txt";
 		ProjectWindowUtil.CreateScriptAssetFromTemplateFile(templatePath, "NewScript.cs");
 	}
+
+	[MenuItem("Assets/Create/Code/ToolMonoBehaviourScript", priority = 40)]
+	public static void CreateToolsMonoBehaviourMenuItem()
+	{
+		string templatePath = "Assets/_ALS/_Tools/ScriptTemplates/Editor/Templates/82-C#_Script-NewToolBehaviourScript.cs.txt";
+		ProjectWindowUtil.CreateScriptAssetFromTemplateFile(templatePath, "NewScript.cs");
+	}
 }
