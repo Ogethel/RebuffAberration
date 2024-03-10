@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_ALS/_RebuffAberration/_UI/css-SytleSheets/MenuScreens.uss?fileID=7433441132597879392&amp;guid=8b6e3b7ab23f1924f93a6d69c468ef34&amp;type=3#MenuScreens" />
+    <Style src="project://database/Assets/_ALS/_RebuffAberration/_UI/css-SytleSheets/MainMenu.uss?fileID=7433441132597879392&amp;guid=ded9919275ba757408b484ae6e7fcd99&amp;type=3#MainMenu" />
+</ui:UXML>
