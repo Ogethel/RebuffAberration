@@ -8,7 +8,7 @@ namespace ALS.Aberration
     /// MenuButtonSO
     /// </summary>
 	[CreateAssetMenu(fileName = "MenuButtonSO", menuName = "Quiz/MenuButtonSO")]
-	public class MenuButtonSO : DescriptionSO
+	public class MenuButtonSO : ScriptableObject
 	{
         [SerializeField] string m_ElementID;    // The ID of the button element in the UI
         [TextArea(3, 10)]
@@ -19,7 +19,7 @@ namespace ALS.Aberration
         Button m_MenuButton;                    // The UI Element Button object
 
         public string ElementID => m_ElementID;
-        public string ButtonDescription => m_Description;
+        public string Description => m_Description;
         public Sprite Image => m_Image;
 
         public Button MenuButton { get => m_MenuButton; set => m_MenuButton = value; }

@@ -21,6 +21,7 @@ public class MainMenuFocusController : MonoBehaviour
 		if (!target) return;
 
 		Camera.main.transform.position = target.position;
+		Camera.main.transform.rotation = target.rotation;
 	}
 
 	private void OnDisable()
@@ -35,5 +36,6 @@ public class MainMenuFocusController : MonoBehaviour
 		if (!target) return;
 
 		Camera.main.transform.position = target.position;
+		Camera.main.transform.rotation = target.rotation;
 	}
 }
