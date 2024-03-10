@@ -1,4 +1,4 @@
-.mainmenu-button {
+.menu-button {
     -unity-font: url('project://database/Assets/_ALS/_RebuffAberration/_Fonts/Archery_Black_Condensed.ttf?fileID=12800000&guid=9bc85aec285a1024d8a3ded80e324af8&type=3#Archery_Black_Condensed');
     -unity-font-definition: initial;
     font-size: 100px;
@@ -23,11 +23,20 @@
     background-color: rgba(54, 55, 156, 0.46);
 }
 
-.mainmenu-button:hover {
+.menu-button:hover {
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out-cubic;
     scale: 1.05 1.075;
     color: rgb(255, 255, 255);
+    translate: 3% 0;
+    -unity-text-outline-color: rgba(255, 255, 255, 0);
+}
+
+.menu-button:active {
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out-cubic;
+    scale: 1.05 1.075;
+    color: rgb(146, 196, 219);
     translate: 3% 0;
     -unity-text-outline-color: rgba(255, 255, 255, 0);
 }
