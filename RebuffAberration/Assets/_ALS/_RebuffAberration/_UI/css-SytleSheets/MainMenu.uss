@@ -22,3 +22,12 @@
     color: rgb(0, 64, 111);
     background-color: rgba(54, 55, 156, 0.46);
 }
+
+.mainmenu-button:hover {
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out-cubic;
+    scale: 1.05 1.075;
+    color: rgb(255, 255, 255);
+    translate: 3% 0;
+    -unity-text-outline-color: rgba(255, 255, 255, 0);
+}

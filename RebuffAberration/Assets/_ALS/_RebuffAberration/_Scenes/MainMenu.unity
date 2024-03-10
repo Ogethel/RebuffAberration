@@ -601,6 +601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873641526}
+  - component: {fileID: 1873641527}
   m_Layer: 0
   m_Name: MainMenu_TrackingPoints
   m_TagString: Untagged
@@ -626,6 +627,22 @@ Transform:
   - {fileID: 1692569437}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1873641527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873641525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8208f6e38b9cedb4ca264fdc876397c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraPositions:
+  - {fileID: 2136052775}
+  - {fileID: 1326952096}
+  - {fileID: 1692569436}
 --- !u!1 &2097029072
 GameObject:
   m_ObjectHideFlags: 0

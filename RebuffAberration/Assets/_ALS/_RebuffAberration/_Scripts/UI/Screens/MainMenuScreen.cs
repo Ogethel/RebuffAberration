@@ -1,6 +1,9 @@
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace ALS.Aberration
 {
@@ -16,8 +19,8 @@ namespace ALS.Aberration
         [SerializeField] string m_DemosScenePath = "Unity Technologies/QuizU - A UI Toolkit demo/Assets/Demos/0_DemoSelection/DemoSelection.unity";
         [SerializeField] int m_DemosSceneIndex = 11;
 
-        //Label m_Description;        // Label element to display descriptions
-        Button m_PlayButton;        // Button to switch to the Level Selection screen
+		Label m_Description;        // Label element to display descriptions
+		Button m_PlayButton;        // Button to switch to the Level Selection screen
         Button m_SettingsButton;    // Button to switch to the Settings screen
         Button m_QuitButton;        // Button to Quit the application from the main menu
         //Button m_DemosButton;       // Button load the DemoSelection scene
@@ -36,10 +39,10 @@ namespace ALS.Aberration
 
         private void SetVisualElements()
         {
-            //m_Description = m_RootElement.Q<Label>("menu__description");
-            //m_Description.text = string.Empty;
+			m_Description = m_RootElement.Q<Label>("menu__description");
+			m_Description.text = string.Empty;
 
-            m_SettingsButton = m_RootElement.Q<Button>("menu__button-settings");
+			m_SettingsButton = m_RootElement.Q<Button>("menu__button-settings");
             m_PlayButton = m_RootElement.Q<Button>("menu__button-play");
             m_QuitButton = m_RootElement.Q<Button>("menu__button-quit");
 
@@ -55,8 +58,10 @@ namespace ALS.Aberration
             // The ScriptableObjects store the MenuButton and ElementID fields store references to the
             // Button and button id, so we don't have to store it here (we use this for the buttons that
             // link to the Dragon Crashers, UI Documentation, How To articles, and UI Artist resources
+            Debug.Log("Tried to Load resources");
             for (int i = 0; i < m_MenuButtonData.Length; i++)
             {
+                Debug.Log($"PreLoaded data {i} out of {m_MenuButtonData.Length}");
                 m_MenuButtonData[i].MenuButton = m_RootElement.Q<Button>(m_MenuButtonData[i].ElementID);
 
                 // Use the userData property to store custom description for use later
@@ -69,26 +74,79 @@ namespace ALS.Aberration
             // Register System.Action delegates to each Button's ClickEvent. 
             m_EventRegistry.RegisterCallback<ClickEvent>(m_SettingsButton, evt => UIEvents.SettingsShown?.Invoke());
             m_EventRegistry.RegisterCallback<ClickEvent>(m_PlayButton, evt => UIEvents.LevelSelectionShown?.Invoke());
+            
+            //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_PlayButton, FocusPlay);
+            //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_SettingsButton, FocusSettings);
+            //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_QuitButton, FocusQuit);
+			//m_PlayButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.PlayFocused?.Invoke());
+			//m_SettingsButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.SettingsFocused?.Invoke());
+			//m_QuitButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.QuitFocused?.Invoke());
 
-            //m_EventRegistry.RegisterCallback<ClickEvent>(m_DemosButton, evt => LoadSceneByIndex(m_DemosSceneIndex));
+			//m_EventRegistry.RegisterCallback<ClickEvent>(m_DemosButton, evt => LoadSceneByIndex(m_DemosSceneIndex));
 
-            //m_EventRegistry.RegisterCallback<ClickEvent>(m_MoreButton, evt => ShowButtonContainer(2));
-            //m_EventRegistry.RegisterCallback<ClickEvent>(m_BackButton, evt => ShowButtonContainer(1));
+			//m_EventRegistry.RegisterCallback<ClickEvent>(m_MoreButton, evt => ShowButtonContainer(2));
+			//m_EventRegistry.RegisterCallback<ClickEvent>(m_BackButton, evt => ShowButtonContainer(1));
 
-            // Loop through all MenuButtonData ScriptableObjects, get the corresponding Button objects,
-            // and register callbacks for MouseEnterEvent and MouseLeaveEvent.
-            for (int i = 0; i < m_MenuButtonData.Length; i++)
-            {
-                m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_MenuButtonData[i].MenuButton, EnterMenuHandler);
-                m_EventRegistry.RegisterCallback<MouseLeaveEvent>(m_MenuButtonData[i].MenuButton, ExitMenuHandler);
-
-                // If a MenuButton has a corresponding URL, verify the link and then set up the corresponding Button ClickEvent
-                if (Uri.IsWellFormedUriString(m_MenuButtonData[i].URL, UriKind.Absolute))
-                {
-                    m_EventRegistry.RegisterCallback<ClickEvent>(m_MenuButtonData[i].MenuButton, evt => OpenURL(evt.target as Button));
+			// Loop through all MenuButtonData ScriptableObjects, get the corresponding Button objects,
+			// and register callbacks for MouseEnterEvent and MouseLeaveEvent.
+			for (int i = 0; i < m_MenuButtonData.Length; i++)
+			{
+                string switchString = m_MenuButtonData[i].ElementID;
+                Debug.Log($"Loaded data {switchString}");
+				switch (switchString)
+				{
+                    case "menu__button-play":
+                        m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_MenuButtonData[i].MenuButton, FocusPlay);
+                        break;
+                    case "menu__button-settings":
+                        m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_MenuButtonData[i].MenuButton, FocusSettings);
+                        break;
+                    case "menu__button-quit":
+                        m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_MenuButtonData[i].MenuButton, FocusQuit);
+                        break;
                 }
-            }
+				//m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_MenuButtonData[i].MenuButton, EnterMenuHandler);
+				m_EventRegistry.RegisterCallback<MouseLeaveEvent>(m_MenuButtonData[i].MenuButton, ExitMenuHandler);
+
+				// If a MenuButton has a corresponding URL, verify the link and then set up the corresponding Button ClickEvent
+				if (Uri.IsWellFormedUriString(m_MenuButtonData[i].URL, UriKind.Absolute))
+				{
+					m_EventRegistry.RegisterCallback<ClickEvent>(m_MenuButtonData[i].MenuButton, evt => OpenURL(evt.target as Button));
+				}
+			}
+		}
+
+        void FocusPlay(MouseEnterEvent evt)
+		{
+            Button eventButton = evt.target as Button;
+            m_Description.text = (string)eventButton.userData;
+            Debug.Log("FocusPlay was called in MainMenuScreen");
+            EventBus<SwitchMenuFocus>.Raise(new SwitchMenuFocus
+            {
+                View = 0
+            });
+		}
+
+        void FocusSettings(MouseEnterEvent evt)
+        {
+            Button eventButton = evt.target as Button;
+            m_Description.text = (string)eventButton.userData;
+            EventBus<SwitchMenuFocus>.Raise(new SwitchMenuFocus
+            {
+                View = 1
+            });
         }
+
+        void FocusQuit(MouseEnterEvent evt)
+        {
+            Button eventButton = evt.target as Button;
+            m_Description.text = (string)eventButton.userData;
+            EventBus<SwitchMenuFocus>.Raise(new SwitchMenuFocus
+            {
+                View = 2
+            });
+        }
+
 
         private void ShowButtonContainer(int index)
         {
@@ -114,9 +172,9 @@ namespace ALS.Aberration
             // Get the button that raised the event
             Button eventButton = evt.target as Button;
 
-            //// Update the description text using the previously stored custom data
-            //m_Description.text = (string)eventButton.userData;
-        }
+			//// Update the description text using the previously stored custom data
+			m_Description.text = (string)eventButton.userData;
+		}
 
         // Handle MouseLeaveEvent by clearing the description text.
         private void ExitMenuHandler(MouseLeaveEvent evt)

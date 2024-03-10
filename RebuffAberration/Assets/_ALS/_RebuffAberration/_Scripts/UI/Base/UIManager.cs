@@ -55,7 +55,7 @@ namespace ALS.Aberration
         // A list of all Views to show/hide
         List<UIScreen> m_Screens = new List<UIScreen>();
 
-        [SerializeField] SceneLoader _sceneLoader;
+        SceneLoader _sceneLoader;
 
         public UIScreen CurrentScreen => m_CurrentScreen;
         public UIDocument Document => m_Document;
@@ -86,14 +86,17 @@ namespace ALS.Aberration
             // Pair GameEvents with methods to Show each screen
             UIEvents.SplashScreenShown += UIEvents_SplashScreenShown;
             UIEvents.MainMenuShown += UIEvents_MainMenuShown;
+            UIEvents.PlayFocused += FocusPlay;
+            UIEvents.SettingsFocused += FocusSettings;
+            UIEvents.QuitFocused += FocusQuit;
             //UIEvents.SettingsShown += UIEvents_SettingsShown;
-			//UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
-			//UIEvents.GameScreenShown += UIEvents_GameScreenShown;
-			//UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
-			//UIEvents.EndScreenShown += UIEvents_EndScreenShown;
-			//UIEvents.ScreenClosed += UIEvents_ScreenClosed;
-			//UIEvents.UrlOpened += UIEvents_UrlOpened;
-		}
+            //UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
+            //UIEvents.GameScreenShown += UIEvents_GameScreenShown;
+            //UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
+            //UIEvents.EndScreenShown += UIEvents_EndScreenShown;
+            //UIEvents.ScreenClosed += UIEvents_ScreenClosed;
+            //UIEvents.UrlOpened += UIEvents_UrlOpened;
+        }
 
         private void UnsubscribeFromEvents()
         {
@@ -101,14 +104,17 @@ namespace ALS.Aberration
 
             UIEvents.SplashScreenShown -= UIEvents_SplashScreenShown;
 			UIEvents.MainMenuShown -= UIEvents_MainMenuShown;
-			//UIEvents.SettingsShown -= UIEvents_SettingsShown;
-			//UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
-			//UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
-			//UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
-			//UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
-			//UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
-			//UIEvents.UrlOpened -= UIEvents_UrlOpened;
-		}
+            UIEvents.PlayFocused -= FocusPlay;
+            UIEvents.SettingsFocused -= FocusSettings;
+            UIEvents.QuitFocused -= FocusQuit;
+            //UIEvents.SettingsShown -= UIEvents_SettingsShown;
+            //UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
+            //UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
+            //UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
+            //UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
+            //UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
+            //UIEvents.UrlOpened -= UIEvents_UrlOpened;
+        }
 
         // Event-handling methods
 
@@ -136,6 +142,33 @@ namespace ALS.Aberration
             if (!_sceneLoader) _sceneLoader = FindAnyObjectByType<SceneLoader>();
             if (!_sceneLoader) return;
             _sceneLoader.LoadSceneAdditively(1);
+        }
+
+        public void FocusPlay()
+        {
+            Debug.Log("FocusPlay was called in MainMenuScreen");
+            EventBus<SwitchMenuFocus>.Raise(new SwitchMenuFocus
+            {
+                View = 0
+            });
+        }
+
+        public void FocusSettings()
+        {
+            Debug.Log("FocusSettings was called in MainMenuScreen");
+            EventBus<SwitchMenuFocus>.Raise(new SwitchMenuFocus
+            {
+                View = 1
+            });
+        }
+
+        public void FocusQuit()
+        {
+            Debug.Log("FocusQuit was called in MainMenuScreen");
+            EventBus<SwitchMenuFocus>.Raise(new SwitchMenuFocus
+            {
+                View = 2
+            });
         }
 
         private void UIEvents_SettingsShown()
@@ -198,7 +231,7 @@ namespace ALS.Aberration
 			//m_EndScreen = new EndScreen(root.Q<VisualElement>("end-screen__container"));
 
 			// Notify the GameController the UIScreen for LevelSelection has been setup
-			//LevelSelectionEvents.Initialized?.Invoke(m_LevelSelectionScreen as LevelSelectionScreen);
+			LevelSelectionEvents.Initialized?.Invoke(m_LevelSelectionScreen as LevelSelectionScreen);
 
 			RegisterScreens();
             HideScreens();

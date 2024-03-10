@@ -8,14 +8,14 @@ namespace ALS.Aberration
     /// </summary>
     public static class LevelSelectionEvents
     {
-        // Send the LevelSelectionScreen to the 
-        //public static Action<LevelSelectionScreen> Initialized;
+		// Send the LevelSelectionScreen to the 
+		public static Action<LevelSelectionScreen> Initialized;
 
-        // Send the chosen button's index to the LevelSelectionPresenter
-        public static Action<int> ButtonSelected;
+		// Send the chosen button's index to the LevelSelectionPresenter
+		public static Action<int> ButtonSelected;
 
-        // Show the selected Quiz ScriptableObject data on the LevelSelectionScreen
-        //public static Action<QuizSO> QuizDataLoaded;
+		// Show the selected Quiz ScriptableObject data on the LevelSelectionScreen
+		public static Action<QuizSO> QuizDataLoaded;
 
-    }
+	}
 }

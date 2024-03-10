@@ -13,7 +13,9 @@
                 <ui:Button text="QUIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu__button-quit" class="mainmenu-button" style="-unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/_ALS/_RebuffAberration/_Fonts/Archery_Black_Condensed.ttf?fileID=12800000&amp;guid=9bc85aec285a1024d8a3ded80e324af8&amp;type=3#Archery_Black_Condensed&apos;); font-size: 100px; -unity-font-style: normal; background-image: url(&apos;project://database/Assets/_ALS/_RebuffAberration/_Art/UI/Patterns/CrackedEarthTexture_Stylized.png?fileID=175845590&amp;guid=8b0f1c69e732f424d9697dd9c00bb227&amp;type=3#CrackedEarthTexture_Stylized_6&apos;); width: 100%;" />
             </ui:VisualElement>
             <ui:VisualElement name="menu__graphic-panel" picking-mode="Ignore" style="width: 60%; height: 100%;">
-                <ui:VisualElement picking-mode="Ignore" name="menu_graphic_element" style="flex-grow: 1;" />
+                <ui:VisualElement picking-mode="Ignore" name="menu_graphic_element" style="flex-grow: 1; justify-content: flex-end;">
+                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu__description" style="font-size: 52px; width: 90%; align-self: flex-end; height: 12%;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

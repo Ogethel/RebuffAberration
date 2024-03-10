@@ -1,48 +1,27 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace ALS.Tools
+
+public static class EventBus<T> where T : IEvent
 {
-    /// <summary>
-    /// EventBus
-    /// </summary>
-    public interface IEvent { }
+	static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();
 
-    /// <summary>
-    /// EventBus
-    /// </summary>
-    internal interface IEventBinding<T>
+	public static void Register(EventBinding<T> binding) => bindings.Add(binding);
+	public static void DeRegister(EventBinding<T> binding) => bindings.Remove(binding);
+
+	public static void Raise(T @event)
 	{
-        public Action<T> OnEvent { get; set; }
-        public Action OnEventNoArgs { get; set; }
+		foreach(var binding in bindings)
+		{
+			binding.OnEvent.Invoke(@event);
+			binding.OnEventNoArgs.Invoke();
+		}
 	}
 
-    /// <summary>
-    /// EventBus
-    /// </summary>
-    public class EventBinding<T> : IEventBinding<T> where T : IEvent
+	static void Clear()
 	{
-        Action<T> onEvent = _ => { };
-        Action onEventNoArgs = () => { };
-
-        Action<T> IEventBinding<T>.OnEvent
-		{
-            get => onEvent;
-            set => onEvent = value;
-		}
-
-        Action IEventBinding<T>.OnEventNoArgs
-		{
-            get => onEventNoArgs;
-            set => onEventNoArgs = value;
-		}
-
-        public EventBinding(Action<T> onEvent) => this.onEvent = onEvent;
-        public EventBinding(Action onEventNoArgs) => this.onEventNoArgs = onEventNoArgs;
-
-        public void Add(Action onEvent) => onEventNoArgs += onEvent;
-        public void Remove(Action onEvent) => onEventNoArgs -= onEvent;
-
-        public void Add(Action<T> onEvent) => this.onEvent += onEvent;
-        public void Remove(Action<T> onEvent) => this.onEvent -= onEvent;
-    }
+		Debug.Log($"Clearing {typeof(T).Name} bindings");
+		bindings.Clear();
+	}
 }

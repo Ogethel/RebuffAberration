@@ -18,6 +18,10 @@ namespace ALS.Aberration
         // Show the Main Menu selection (Settings, Level Selection)
         public static Action MainMenuShown;
 
+        public static Action PlayFocused;
+        public static Action SettingsFocused;
+        public static Action QuitFocused;
+
         // Show the user settings (sound volume)
         public static Action SettingsShown;
 
