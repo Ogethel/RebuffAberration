@@ -91,7 +91,7 @@ namespace ALS.Aberration
             UIEvents.QuitFocused += FocusQuit;
             //UIEvents.SettingsShown += UIEvents_SettingsShown;
             //UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
-            //UIEvents.GameScreenShown += UIEvents_GameScreenShown;
+            UIEvents.GameScreenShown += UIEvents_GameScreenShown;
             //UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
             //UIEvents.EndScreenShown += UIEvents_EndScreenShown;
             //UIEvents.ScreenClosed += UIEvents_ScreenClosed;
@@ -109,7 +109,7 @@ namespace ALS.Aberration
             UIEvents.QuitFocused -= FocusQuit;
             //UIEvents.SettingsShown -= UIEvents_SettingsShown;
             //UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
-            //UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
+            UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
             //UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
             //UIEvents.EndScreenShown -= UIEvents_EndScreenShown;
             //UIEvents.ScreenClosed -= UIEvents_ScreenClosed;
@@ -184,6 +184,9 @@ namespace ALS.Aberration
         private void UIEvents_GameScreenShown()
         {
             Show(m_GameScreen);
+            _sceneLoader.UnloadLastLoadedScene();
+            _sceneLoader.UnloadLastLoadedScene();
+            _sceneLoader.LoadSceneAdditively(2);
         }
         private void UIEvents_PauseScreenShown()
         {

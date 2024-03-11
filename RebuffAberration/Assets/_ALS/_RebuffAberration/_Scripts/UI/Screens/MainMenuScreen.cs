@@ -73,7 +73,7 @@ namespace ALS.Aberration
         {
             // Register System.Action delegates to each Button's ClickEvent. 
             m_EventRegistry.RegisterCallback<ClickEvent>(m_SettingsButton, evt => UIEvents.SettingsShown?.Invoke());
-            m_EventRegistry.RegisterCallback<ClickEvent>(m_PlayButton, evt => UIEvents.LevelSelectionShown?.Invoke());
+            m_EventRegistry.RegisterCallback<ClickEvent>(m_PlayButton, evt => UIEvents.GameScreenShown?.Invoke());
             
             //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_PlayButton, FocusPlay);
             //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_SettingsButton, FocusSettings);
