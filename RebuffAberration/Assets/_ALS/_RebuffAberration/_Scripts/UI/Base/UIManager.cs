@@ -141,6 +141,7 @@ namespace ALS.Aberration
             m_HomeScreen.Show();
             if (!_sceneLoader) _sceneLoader = FindAnyObjectByType<SceneLoader>();
             if (!_sceneLoader) return;
+            _sceneLoader.UnloadLastLoadedScene();
             _sceneLoader.LoadSceneAdditively(1);
         }
 
@@ -185,7 +186,6 @@ namespace ALS.Aberration
         {
             Show(m_GameScreen);
             _sceneLoader.UnloadLastLoadedScene();
-            _sceneLoader.UnloadLastLoadedScene();
             _sceneLoader.LoadSceneAdditively(2);
         }
         private void UIEvents_PauseScreenShown()
@@ -229,7 +229,7 @@ namespace ALS.Aberration
 			m_HomeScreen = new MainMenuScreen(root.Q<VisualElement>("menu__container"));
 			//m_SettingsScreen = new SettingsScreen(root.Q<VisualElement>("settings__container"));
 			//m_LevelSelectionScreen = new LevelSelectionScreen(root.Q<VisualElement>("select__container"));
-			//m_GameScreen = new GameScreen(root.Q<VisualElement>("question-screen__parent"));
+			m_GameScreen = new GameScreen(root.Q<VisualElement>("gamehud__container"));
 			//m_PauseScreen = new PauseScreen(root.Q<VisualElement>("pause__container"));
 			//m_EndScreen = new EndScreen(root.Q<VisualElement>("end-screen__container"));
 
@@ -250,7 +250,7 @@ namespace ALS.Aberration
                 m_HomeScreen,
                 //m_SettingsScreen,
                 //m_LevelSelectionScreen,
-                //m_GameScreen,
+                m_GameScreen,
                 //m_PauseScreen,
                 //m_EndScreen
             };
