@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4217498c621f34640976f0cf92dd733b, type: 3}
   m_Name: BaseEnemy_Enemy_SO
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 2525959128216460478, guid: 64e6ea7f2a2f59a4db2a7557296c1d85, type: 3}
   AttackConfiguration: {fileID: 11400000, guid: 5b5a44cfb6ce6be4baa23f4e33655031,
     type: 2}
-  Health: 100
+  Health: 200
   DefaultState: 3
   IdleLocationRadius: 4
   IdleMovespeedMultiplier: 0.5
-  Waypoints: 4
-  LineOfSightRange: 6
-  FieldOfView: 90
+  Waypoints: 2
+  LineOfSightRange: 15
+  FieldOfView: 120
   AIUpdateInterval: 0.1
   Acceleration: 8
   AngularSpeed: 120
@@ -32,4 +32,4 @@ MonoBehaviour:
   ObstacleAvoidanceType: 1
   Radius: 0.5
   Speed: 3
-  StoppingDistance: 0.5
+  StoppingDistance: 2.25

@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AudioMixer: {fileID: 24100000, guid: 60123e391cb88b241bf5641ad7175273, type: 2}
   m_MasterVolume: 1
   m_SoundEffectsVolume: 1
-  m_MusicVolume: 0
+  m_MusicVolume: 0.25
   m_IsMasterMuted: 0
   m_IsSoundEffectsMuted: 0
   m_IsMusicMuted: 0

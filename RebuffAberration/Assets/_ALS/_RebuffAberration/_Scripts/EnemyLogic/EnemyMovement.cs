@@ -18,7 +18,7 @@ namespace ALS.Aberration
         private NavMeshAgent Agent;
         private AgentLinkMover LinkMover;
         [SerializeField]
-        private Animator Animator = null;
+        private Animator _animator = null;
 
         public EnemyState DefaultState;
         private EnemyState _state;
@@ -103,11 +103,11 @@ namespace ALS.Aberration
         {
             if (MoveMethod == OffMeshLinkMoveMethod.NormalSpeed)
             {
-                Animator.SetBool(IsWalking, true);
+                if (_animator) _animator.SetBool(IsWalking, true);
             }
             else if (MoveMethod != OffMeshLinkMoveMethod.Teleport)
             {
-                Animator.SetTrigger(Jump);
+                if (_animator) _animator.SetTrigger(Jump);
             }
         }
 
@@ -115,7 +115,7 @@ namespace ALS.Aberration
         {
             if (MoveMethod != OffMeshLinkMoveMethod.Teleport && MoveMethod != OffMeshLinkMoveMethod.NormalSpeed)
             {
-                Animator.SetTrigger(Landed);
+                if (_animator) _animator.SetTrigger(Landed);
             }
         }
 
@@ -123,7 +123,7 @@ namespace ALS.Aberration
         {
             if (!Agent.isOnOffMeshLink)
             {
-                Animator.SetBool(IsWalking, Agent.velocity.magnitude > 0.01f);
+                if(_animator) _animator.SetBool(IsWalking, Agent.velocity.magnitude > 0.01f);
             }
         }
 

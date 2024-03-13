@@ -28,7 +28,7 @@ namespace ALS.Aberration
 
         private void OnAttack(IDamageable Target)
         {
-            Animator.SetTrigger(ATTACK_TRIGGER);
+            if(Animator) Animator.SetTrigger(ATTACK_TRIGGER);
 
             if (LookCoroutine != null)
             {
