@@ -1,9 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd"
->
-    
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="settings_container" style="flex-grow: 1;">
+        <ui:VisualElement name="settings__background" style="flex-grow: 1;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="screen-label" />
+        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="back-button" />
+        <ui:VisualElement name="settings_group" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="settings__label" />
+            <ui:VisualElement name="settings__panel" style="flex-grow: 1;">
+                <ui:VisualElement name="settings__master-slider-group" style="flex-grow: 1;">
+                    <ui:Slider label="Slider" high-value="100" name="settings__master-volume-slider" />
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="settings__master-volume-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="settings__sfx-slider-group" style="flex-grow: 1;">
+                    <ui:Slider label="Slider" high-value="100" name="settings__sfx-volume-slider" />
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="settings__sfx-volume-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="settings__music-slider-group" style="flex-grow: 1;">
+                    <ui:Slider label="Slider" high-value="100" name="settings__music-volume-slider" />
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="settings__music-volume-label" />
+                </ui:VisualElement>
+                <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="settings__close-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

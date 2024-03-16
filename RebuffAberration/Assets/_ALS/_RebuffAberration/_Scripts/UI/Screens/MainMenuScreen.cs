@@ -74,22 +74,22 @@ namespace ALS.Aberration
             // Register System.Action delegates to each Button's ClickEvent. 
             m_EventRegistry.RegisterCallback<ClickEvent>(m_SettingsButton, evt => UIEvents.SettingsShown?.Invoke());
             m_EventRegistry.RegisterCallback<ClickEvent>(m_PlayButton, evt => UIEvents.GameScreenShown?.Invoke());
-            
+
             //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_PlayButton, FocusPlay);
             //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_SettingsButton, FocusSettings);
             //m_EventRegistry.RegisterCallback<MouseEnterEvent>(m_QuitButton, FocusQuit);
-			//m_PlayButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.PlayFocused?.Invoke());
-			//m_SettingsButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.SettingsFocused?.Invoke());
-			//m_QuitButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.QuitFocused?.Invoke());
+            //m_PlayButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.PlayFocused?.Invoke());
+            m_SettingsButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.SettingsFocused?.Invoke());
+            //m_QuitButton.RegisterCallback<PointerEnterEvent>(evt => UIEvents.QuitFocused?.Invoke());
 
-			//m_EventRegistry.RegisterCallback<ClickEvent>(m_DemosButton, evt => LoadSceneByIndex(m_DemosSceneIndex));
+            //m_EventRegistry.RegisterCallback<ClickEvent>(m_DemosButton, evt => LoadSceneByIndex(m_DemosSceneIndex));
 
-			//m_EventRegistry.RegisterCallback<ClickEvent>(m_MoreButton, evt => ShowButtonContainer(2));
-			//m_EventRegistry.RegisterCallback<ClickEvent>(m_BackButton, evt => ShowButtonContainer(1));
+            //m_EventRegistry.RegisterCallback<ClickEvent>(m_MoreButton, evt => ShowButtonContainer(2));
+            //m_EventRegistry.RegisterCallback<ClickEvent>(m_BackButton, evt => ShowButtonContainer(1));
 
-			// Loop through all MenuButtonData ScriptableObjects, get the corresponding Button objects,
-			// and register callbacks for MouseEnterEvent and MouseLeaveEvent.
-			for (int i = 0; i < m_MenuButtonData.Length; i++)
+            // Loop through all MenuButtonData ScriptableObjects, get the corresponding Button objects,
+            // and register callbacks for MouseEnterEvent and MouseLeaveEvent.
+            for (int i = 0; i < m_MenuButtonData.Length; i++)
 			{
                 string switchString = m_MenuButtonData[i].ElementID;
                 Debug.Log($"Loaded data {switchString}");

@@ -89,7 +89,7 @@ namespace ALS.Aberration
             UIEvents.PlayFocused += FocusPlay;
             UIEvents.SettingsFocused += FocusSettings;
             UIEvents.QuitFocused += FocusQuit;
-            //UIEvents.SettingsShown += UIEvents_SettingsShown;
+            UIEvents.SettingsShown += UIEvents_SettingsShown;
             //UIEvents.LevelSelectionShown += UIEvents_LevelSelectionShown;
             UIEvents.GameScreenShown += UIEvents_GameScreenShown;
             //UIEvents.PauseScreenShown += UIEvents_PauseScreenShown;
@@ -107,7 +107,7 @@ namespace ALS.Aberration
             UIEvents.PlayFocused -= FocusPlay;
             UIEvents.SettingsFocused -= FocusSettings;
             UIEvents.QuitFocused -= FocusQuit;
-            //UIEvents.SettingsShown -= UIEvents_SettingsShown;
+            UIEvents.SettingsShown -= UIEvents_SettingsShown;
             //UIEvents.LevelSelectionShown -= UIEvents_LevelSelectionShown;
             UIEvents.GameScreenShown -= UIEvents_GameScreenShown;
             //UIEvents.PauseScreenShown -= UIEvents_PauseScreenShown;
